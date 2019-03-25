@@ -15,6 +15,9 @@ namespace CityWeather.Application
 
         public void Execute(int id, int rating, DateTime established, int estimatedPopulation)
         {
+            Validator.ValidateTouristRating(rating);
+            Validator.ValidateEstablishedDate(established);
+
             _citiesRepository.UpdateCityDetails(id, rating, established, estimatedPopulation);
         }
     }

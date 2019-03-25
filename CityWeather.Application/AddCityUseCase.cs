@@ -15,7 +15,10 @@ namespace CityWeather.Application
 
         public void Execute(CityDetails cityDetails)
         {
+            Validator.ValidateTouristRating(cityDetails.Rating);
+            Validator.ValidateEstablishedDate(cityDetails.Established);
+
             _citiesRepository.StoreCityDetails(cityDetails);
-        }
+        }        
     }
 }

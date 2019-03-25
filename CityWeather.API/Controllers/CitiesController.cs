@@ -10,8 +10,7 @@ namespace CityWeather.API.Controllers
     public class CitiesController : ControllerBase
     {
         // TODO:
-        // - Validation on ratings etc.
-        // - Try Catch code
+        // - Rating => TouristRating
 
         private readonly IAddCityUseCase _addCityUseCase;
         private readonly IDeleteCityUseCase _deleteCityUseCase;
@@ -29,14 +28,30 @@ namespace CityWeather.API.Controllers
         [HttpPost]
         public ActionResult Add([FromBody]CityDetails cityDetails)
         {
-            _addCityUseCase.Execute(cityDetails);
+            try
+            {
+                _addCityUseCase.Execute(cityDetails);
+            }
+            catch(ArgumentException argumentEx)
+            {
+                return BadRequest(argumentEx.Data);
+            }
+
             return Ok();
         }
 
         [HttpPatch]
         public ActionResult Update(int id, int rating, DateTime established, int estimatedPopulation)
         {
-            _updateCityUseCase.Execute(id, rating, established, estimatedPopulation);
+            try
+            {
+                _updateCityUseCase.Execute(id, rating, established, estimatedPopulation);
+            }
+            catch(ArgumentException argumentEx)
+            {
+                return BadRequest(argumentEx.Data);
+            }
+
             return Ok();
         }
 
