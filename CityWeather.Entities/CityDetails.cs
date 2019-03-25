@@ -19,5 +19,7 @@ namespace CityWeather.Entities
         public DateTime Established { get; set; }
 
         public int EstimatedPopulation { get; set; }
+
+        public string CurrentWeather { get; set; }
     }
 }

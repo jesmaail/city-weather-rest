@@ -10,7 +10,6 @@ namespace CityWeather.API.Controllers
     public class CitiesController : ControllerBase
     {
         // TODO:
-        // - Unit test    
         // - Validation on ratings etc.
         // - Try Catch code
 

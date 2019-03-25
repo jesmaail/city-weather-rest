@@ -1,5 +1,4 @@
 ﻿using CityWeather.Application.Interfaces;
-using CityWeather.Data;
 using CityWeather.Data.Interfaces;
 
 namespace CityWeather.Application

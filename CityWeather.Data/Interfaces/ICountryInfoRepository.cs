@@ -2,7 +2,7 @@
 
 namespace CityWeather.Data.Interfaces
 {
-    public interface ICountriesRepository
+    public interface ICountryInfoRepository
     {
         CountryInfo GetCountryInformation(string name); 
     }

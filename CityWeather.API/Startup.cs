@@ -29,7 +29,9 @@ namespace CityWeather.API
             services.AddSingleton<IDeleteCityUseCase, DeleteCityUseCase>();
             services.AddSingleton<ISearchCityUseCase, SearchCityUseCase>();
             services.AddSingleton<IUpdateCityUseCase, UpdateCityUseCase>();
+
             services.AddSingleton<ICitiesRepository, CitiesRepository>();
+            services.AddSingleton<ICountryInfoRepository, CountryInfoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
