@@ -1,4 +1,5 @@
 ﻿using CityWeather.Entities;
+using System.Collections.Generic;
 
 namespace CityWeather.Data
 {
@@ -6,7 +7,7 @@ namespace CityWeather.Data
     {
         void StoreCityDetails(CityDetails city);
 
-        CityDetails GetCityDetails(int id);
+        IEnumerable<CityDetails> GetCityDetails(string name);
 
         void UpdateCityDetails(int id, CityDetails city);
 

@@ -1,5 +1,4 @@
-﻿using System;
-using CityWeather.Application;
+﻿using CityWeather.Application;
 using CityWeather.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,9 +11,9 @@ namespace CityWeather.API.Controllers
         // TODO:
         // - Unit test
         // - Dependency Injection        
-        // - Details FromBody or parameters?
         // - Validation on ratings etc.
         // - Try Catch code
+        // - Add Id to CityDetails
 
         private readonly IDeleteCityUseCase _deleteCityUseCase;
 
@@ -42,8 +41,6 @@ namespace CityWeather.API.Controllers
         [HttpDelete]
         public ActionResult Delete(int id)
         {
-            //var useCase = new DeleteCityUseCase();
-            //useCase.Execute(id);
             _deleteCityUseCase.Execute(id);
             return Ok();
         }
@@ -51,8 +48,9 @@ namespace CityWeather.API.Controllers
         [HttpGet]
         public ActionResult Search(string name)
         {
-            // Want to return multiple matches if applicable
-            throw new NotImplementedException();
+            var useCase = new SearchCityUseCase();
+            var results = useCase.Execute(name);
+            return new JsonResult(results);
         }
     }
 }

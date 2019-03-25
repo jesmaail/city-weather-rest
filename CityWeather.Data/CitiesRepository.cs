@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using CityWeather.Entities;
 using Dapper;
@@ -11,6 +11,8 @@ namespace CityWeather.Data
         // - Don't keep DB info here
         // - SProcs
         // - ORM
+        // - At least cleanup the Queries!
+
         private SqlConnection _connection;
         public CitiesRepository()
         {
@@ -24,14 +26,14 @@ namespace CityWeather.Data
             _connection.Execute($"DELETE FROM Cities WHERE Id = {id}");
         }
 
-        public CityDetails GetCityDetails(int id)
+        public IEnumerable<CityDetails> GetCityDetails(string name)
         {
-            throw new NotImplementedException();
+            return _connection.Query<CityDetails>($"SELECT * FROM Cities WHERE Name = '{name}'");
         }
 
         public void StoreCityDetails(CityDetails city)
         {
-            _connection.Execute($"INSERT INTO Cities (Name, State, Country, Rating, Established, EstimatedPopulation)Values('{city.Name}, '{city.State}', '{city.CountryName}', {city.Rating}, '{city.Established}', {city.EstimatedPopulation});");
+            _connection.Execute($"INSERT INTO Cities (Name, State, Country, Rating, Established, EstimatedPopulation) Values('{city.Name}', '{city.State}', '{city.CountryName}', {city.Rating}, '{city.Established}', {city.EstimatedPopulation});");
         }
 
         public void UpdateCityDetails(int id, CityDetails city)

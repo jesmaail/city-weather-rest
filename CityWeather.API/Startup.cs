@@ -22,7 +22,7 @@ namespace CityWeather.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            // DI - Maybe use a third party
+            // DI - Maybe use a third party?
             services.AddSingleton<IDeleteCityUseCase, DeleteCityUseCase>();
             services.AddSingleton<ICitiesRepository, CitiesRepository>();
         }
