@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "b3f55e42-545d-4ad1-abb1-1d3518d6d8a8",
+		"name": "CityWeatherAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Name\"  : \"foo\",\n\t\"State\" : \"bar\",\n\t\"CountryName\" : \"Foob\",\n\t\"Rating\" : \"4\",\n\t\"Established\" : \"01/01/1990\",\n\t\"EstimatedPopulation\" : \"12\"\n}\""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/cities/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"cities",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Name\"  : \"foo\",\n\t\"State\" : \"bar\",\n\t\"CountryName\" : \"Foob\",\n\t\"Rating\" : \"4\",\n\t\"Established\" : \"01/01/1990\",\n\t\"EstimatedPopulation\" : \"12\"\n}\""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/cities/update?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"cities",
+						"update"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/cities/search?name=foo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"cities",
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "foo"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
