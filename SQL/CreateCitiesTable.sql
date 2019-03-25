@@ -12,7 +12,7 @@ CREATE TABLE [dbo].[Cities](
 	[Id] int IDENTITY(1,1) PRIMARY KEY,
 	[Name] [nvarchar](50) NOT NULL,
 	[State] [nvarchar](50) NOT NULL,
-	[Country] [nvarchar](50) NOT NULL,
+	[CountryName] [nvarchar](50) NOT NULL,
 	[Rating] [int] NOT NULL,
 	[Established] [datetime] NOT NULL,
 	[EstimatedPopulation] [int] NOT NULL,
