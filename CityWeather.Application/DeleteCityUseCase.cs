@@ -2,13 +2,13 @@
 
 namespace CityWeather.Application
 {
-    public class DeleteCityUseCase
+    public class DeleteCityUseCase : IDeleteCityUseCase
     {
         private readonly ICitiesRepository _citiesRepository;
 
-        public DeleteCityUseCase()
+        public DeleteCityUseCase(ICitiesRepository citiesRepository)
         {
-
+            _citiesRepository = citiesRepository;
         }
 
         public void Execute(int id)

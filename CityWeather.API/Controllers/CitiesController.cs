@@ -10,12 +10,18 @@ namespace CityWeather.API.Controllers
     public class CitiesController : ControllerBase
     {
         // TODO:
-        // - SQL Connection
         // - Unit test
         // - Dependency Injection        
         // - Details FromBody or parameters?
         // - Validation on ratings etc.
         // - Try Catch code
+
+        private readonly IDeleteCityUseCase _deleteCityUseCase;
+
+        public CitiesController(IDeleteCityUseCase deleteCityUseCase)
+        {
+            _deleteCityUseCase = deleteCityUseCase;
+        }
 
         [HttpPost]
         public ActionResult Add([FromBody]CityDetails cityDetails)
@@ -29,16 +35,16 @@ namespace CityWeather.API.Controllers
         public ActionResult Update(int id, [FromBody]CityDetails cityDetails)
         {
             var useCase = new UpdateCityUseCase();
-
             useCase.Execute(id, cityDetails);
-            throw new NotImplementedException();
+            return Ok();
         }
 
         [HttpDelete]
         public ActionResult Delete(int id)
         {
-            var useCase = new DeleteCityUseCase();
-            useCase.Execute(id);
+            //var useCase = new DeleteCityUseCase();
+            //useCase.Execute(id);
+            _deleteCityUseCase.Execute(id);
             return Ok();
         }
 

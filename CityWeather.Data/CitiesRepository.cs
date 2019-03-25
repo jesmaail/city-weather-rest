@@ -21,7 +21,7 @@ namespace CityWeather.Data
 
         public void DeleteCityDetails(int id)
         {
-            throw new NotImplementedException();
+            _connection.Execute($"DELETE FROM Cities WHERE Id = {id}");
         }
 
         public CityDetails GetCityDetails(int id)
@@ -31,12 +31,12 @@ namespace CityWeather.Data
 
         public void StoreCityDetails(CityDetails city)
         {
-            _connection.Execute("INSERT INTO Cities (Name, State, Country, Rating, Established, EstimatedPopulation)Values('Swansea', 'Wales', 'West Glam', 5, '01-01-1990', 5);");
+            _connection.Execute($"INSERT INTO Cities (Name, State, Country, Rating, Established, EstimatedPopulation)Values('{city.Name}, '{city.State}', '{city.CountryName}', {city.Rating}, '{city.Established}', {city.EstimatedPopulation});");
         }
 
         public void UpdateCityDetails(int id, CityDetails city)
         {
-            throw new NotImplementedException();
+            _connection.Execute($"UPDATE Cities SET Rating = '{city.Rating}', Established = '{city.Established}', EstimatedPopulation = '{city.EstimatedPopulation}' WHERE Id = {id}");
         }
     }
 }
