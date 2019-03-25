@@ -1,5 +1,7 @@
-﻿using CityWeather.Data.Interfaces;
+﻿using CityWeather.Application.Interfaces;
+using CityWeather.Data.Interfaces;
 using CityWeather.Entities;
+using Microsoft.Extensions.Configuration;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -10,6 +12,8 @@ namespace CityWeather.Application.Test
     public class AddCityUseCaseTests
     {
         private Mock<ICitiesRepository> _citiesRepositoryMock = new Mock<ICitiesRepository>();
+        private Mock<IValidator> _validatorMock = new Mock<IValidator>();
+        private Mock<IConfiguration> _configurationMock = new Mock<IConfiguration>();
 
         [SetUp]
         public void SetUp()
@@ -28,7 +32,7 @@ namespace CityWeather.Application.Test
                 Established = new DateTime(2001, 01, 01)
             };
 
-            var sut = new AddCityUseCase(_citiesRepositoryMock.Object);
+            var sut = new AddCityUseCase(_citiesRepositoryMock.Object, _validatorMock.Object);
             sut.Execute(testData);
 
             _citiesRepositoryMock.Verify(x => x.StoreCityDetails(testData), Times.Once);
@@ -47,7 +51,12 @@ namespace CityWeather.Application.Test
                 Established = new DateTime(2001, 01, 01)
             };
 
-            var sut = new AddCityUseCase(_citiesRepositoryMock.Object);
+            _configurationMock.Setup(x => x["MinTouristRating"]).Returns("1");
+            _configurationMock.Setup(x => x["MaxTouristRating"]).Returns("5");
+
+            var validator = new Validator(_configurationMock.Object);
+
+            var sut = new AddCityUseCase(_citiesRepositoryMock.Object, validator);
             Assert.Throws<ArgumentException>(() => sut.Execute(testData));
         }
 
@@ -62,7 +71,12 @@ namespace CityWeather.Application.Test
                 Rating = 4
             };
 
-            var sut = new AddCityUseCase(_citiesRepositoryMock.Object);
+            _configurationMock.Setup(x => x["MinTouristRating"]).Returns("1");
+            _configurationMock.Setup(x => x["MaxTouristRating"]).Returns("5");
+
+            var validator = new Validator(_configurationMock.Object);
+
+            var sut = new AddCityUseCase(_citiesRepositoryMock.Object, validator);
             Assert.Throws<ArgumentException>(() => sut.Execute(testData));
         }
     }

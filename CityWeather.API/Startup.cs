@@ -24,11 +24,15 @@ namespace CityWeather.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddSingleton<IConfiguration>(Configuration);
+
             // DI - Maybe use a third party?
             services.AddSingleton<IAddCityUseCase, AddCityUseCase>();
             services.AddSingleton<IDeleteCityUseCase, DeleteCityUseCase>();
             services.AddSingleton<ISearchCityUseCase, SearchCityUseCase>();
             services.AddSingleton<IUpdateCityUseCase, UpdateCityUseCase>();
+
+            services.AddSingleton<IValidator, Validator>();
 
             services.AddSingleton<ICitiesRepository, CitiesRepository>();
             services.AddSingleton<ICountryInfoRepository, CountryInfoRepository>();

@@ -4,23 +4,23 @@ using System.Data.SqlClient;
 using CityWeather.Data.Interfaces;
 using CityWeather.Entities;
 using Dapper;
+using Microsoft.Extensions.Configuration;
 
 namespace CityWeather.Data
 {
     public class CitiesRepository : ICitiesRepository
     {
         // TODO 
-        // - Don't keep DB info here
         // - SProcs
         // - ORM
         // - At least cleanup the Queries!
 
         private SqlConnection _connection;
-        public CitiesRepository()
+
+        public CitiesRepository(IConfiguration configuration)
         {
             _connection = new SqlConnection();
-            _connection.ConnectionString = "Server=localhost,1433;Database=Cities;User Id=sa; Password=Letmein123!"; 
-            // Thankfully this is a docker instance to spin up and down, this needs to live somewhere secure and definitely not in code ;) TODO TODO TODO
+            _connection.ConnectionString = configuration["DatabaseConnectionString"];
         }
 
         public void DeleteCityDetails(int id)

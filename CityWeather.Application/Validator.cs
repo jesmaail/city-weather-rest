@@ -1,22 +1,28 @@
-﻿using System;
+﻿using CityWeather.Application.Interfaces;
+using Microsoft.Extensions.Configuration;
+using System;
 
 namespace CityWeather.Application
 {
-    public static class Validator
+    public class Validator : IValidator
     {
-        // Move to config
-        private const int MIN_TOURIST_RATING = 1;
-        private const int MAX_TOURIST_RATING = 5;
+        private int _minTouristRating, _maxTouristRating;
 
-        public static void ValidateTouristRating(int rating)
+        public Validator(IConfiguration configuration)
         {
-            if (rating < MIN_TOURIST_RATING || rating > MAX_TOURIST_RATING)
+            int.TryParse(configuration["MinTouristRating"], out _minTouristRating);
+            int.TryParse(configuration["MaxTouristRating"], out _maxTouristRating);
+        }
+
+        public void ValidateTouristRating(int rating)
+        {
+            if (rating < _minTouristRating || rating > _maxTouristRating)
             {
                 throw new ArgumentException("Bad Tourist Rating");
             }
         }
 
-        public static void ValidateEstablishedDate(DateTime established)
+        public void ValidateEstablishedDate(DateTime established)
         {            
             if (established == new DateTime())
             {

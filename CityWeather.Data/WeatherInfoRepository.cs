@@ -1,4 +1,5 @@
 ﻿using CityWeather.Data.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 
@@ -7,14 +8,14 @@ namespace CityWeather.Data
     public class WeatherInfoRepository : IWeatherInfoRepository
     {
         private RestClient _restClient;
+        private readonly IConfiguration _configuration;
 
         private const string OPEN_WEATHER_ENDPOINT = "http://api.openweathermap.org";
         private const string OPEN_WEATHER_RESOURCE = "/data/2.5/weather";
 
-        private const string API_KEY = "e851eca9b5c8361946869bee54f18c6e"; // Wants to NOT be in code!!
-
-        public WeatherInfoRepository()
+        public WeatherInfoRepository(IConfiguration configuration)
         {
+            _configuration = configuration;
             _restClient = new RestClient(OPEN_WEATHER_ENDPOINT);
         }
 
@@ -24,7 +25,7 @@ namespace CityWeather.Data
 
             var request = new RestRequest(OPEN_WEATHER_RESOURCE);
             request.AddQueryParameter("q", $"{cityName},{countryCode}"); 
-            request.AddQueryParameter("APPID", API_KEY);
+            request.AddQueryParameter("APPID", _configuration["OpenWeatherApiKey"]);
 
             var response = _restClient.Execute(request);
 
