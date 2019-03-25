@@ -4,6 +4,8 @@ namespace CityWeather.Entities
 {
     public class CityDetails
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public string State { get; set; }

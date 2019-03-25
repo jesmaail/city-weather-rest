@@ -1,5 +1,5 @@
 ﻿
-namespace CityWeather.Application
+namespace CityWeather.Application.Interfaces
 {
     public interface IDeleteCityUseCase
     {

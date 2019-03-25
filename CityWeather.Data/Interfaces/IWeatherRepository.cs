@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CityWeather.Data
+namespace CityWeather.Data.Interfaces
 {
     interface IWeatherRepository
     {

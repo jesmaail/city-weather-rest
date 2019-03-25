@@ -1,15 +1,16 @@
-﻿using CityWeather.Data;
+﻿using CityWeather.Application.Interfaces;
+using CityWeather.Data.Interfaces;
 using CityWeather.Entities;
 
 namespace CityWeather.Application
 {
-    public class AddCityUseCase
+    public class AddCityUseCase : IAddCityUseCase
     {
         private readonly ICitiesRepository _citiesRepository;
 
-        public AddCityUseCase()
+        public AddCityUseCase(ICitiesRepository citiesRepository)
         {
-            _citiesRepository = new CitiesRepository();
+            _citiesRepository = citiesRepository;
         }
 
         public void Execute(CityDetails cityDetails)

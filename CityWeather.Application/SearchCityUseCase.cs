@@ -1,16 +1,17 @@
-﻿using CityWeather.Data;
+﻿using CityWeather.Application.Interfaces;
+using CityWeather.Data.Interfaces;
 using CityWeather.Entities;
 using System.Collections.Generic;
 
 namespace CityWeather.Application
 {
-    public class SearchCityUseCase
+    public class SearchCityUseCase : ISearchCityUseCase
     {
         private readonly ICitiesRepository _citiesRepository;
 
-        public SearchCityUseCase()
+        public SearchCityUseCase(ICitiesRepository citiesRepository)
         {
-            _citiesRepository = new CitiesRepository();
+            _citiesRepository = citiesRepository;
         }
 
         public IEnumerable<CityDetails> Execute(string name)

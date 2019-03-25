@@ -1,7 +1,7 @@
 ﻿using CityWeather.Entities;
 using System.Collections.Generic;
 
-namespace CityWeather.Data
+namespace CityWeather.Data.Interfaces
 {
     public interface ICitiesRepository
     {

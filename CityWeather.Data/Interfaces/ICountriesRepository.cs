@@ -1,6 +1,6 @@
 ﻿using CityWeather.Entities;
 
-namespace CityWeather.Data
+namespace CityWeather.Data.Interfaces
 {
     public interface ICountriesRepository
     {

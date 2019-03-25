@@ -1,5 +1,7 @@
 ﻿using CityWeather.Application;
+using CityWeather.Application.Interfaces;
 using CityWeather.Data;
+using CityWeather.Data.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +25,10 @@ namespace CityWeather.API
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // DI - Maybe use a third party?
+            services.AddSingleton<IAddCityUseCase, AddCityUseCase>();
             services.AddSingleton<IDeleteCityUseCase, DeleteCityUseCase>();
+            services.AddSingleton<ISearchCityUseCase, SearchCityUseCase>();
+            services.AddSingleton<IUpdateCityUseCase, UpdateCityUseCase>();
             services.AddSingleton<ICitiesRepository, CitiesRepository>();
         }
 

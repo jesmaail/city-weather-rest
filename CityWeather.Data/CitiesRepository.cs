@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
+using CityWeather.Data.Interfaces;
 using CityWeather.Entities;
 using Dapper;
 
@@ -33,7 +34,7 @@ namespace CityWeather.Data
 
         public void StoreCityDetails(CityDetails city)
         {
-            _connection.Execute($"INSERT INTO Cities (Name, State, Country, Rating, Established, EstimatedPopulation) Values('{city.Name}', '{city.State}', '{city.CountryName}', {city.Rating}, '{city.Established}', {city.EstimatedPopulation});");
+            _connection.Execute($"INSERT INTO Cities (Name, State, CountryName, Rating, Established, EstimatedPopulation) Values('{city.Name}', '{city.State}', '{city.CountryName}', {city.Rating}, '{city.Established}', {city.EstimatedPopulation});");
         }
 
         public void UpdateCityDetails(int id, CityDetails city)
