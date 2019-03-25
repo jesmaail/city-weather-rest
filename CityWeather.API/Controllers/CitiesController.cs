@@ -1,4 +1,6 @@
 ﻿using System;
+using CityWeather.Application;
+using CityWeather.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CityWeather.API.Controllers
@@ -11,24 +13,31 @@ namespace CityWeather.API.Controllers
         // - SQL Connection
         // - Unit test
         // - Dependency Injection        
+        // - Details FromBody or parameters?
 
         [HttpPost]
-        public ActionResult Add(string name)
+        public ActionResult Add([FromBody]CityDetails cityDetails)
         {
-            throw new NotImplementedException();
+            var useCase = new AddCityUseCase();            
+            useCase.Execute(cityDetails);
+            return Ok();
         }
 
         [HttpPatch]
-        public ActionResult Update(int id)
+        public ActionResult Update(int id, [FromBody]CityDetails cityDetails)
         {
-            // Want the update data FromBody or in parameters?
+            var useCase = new UpdateCityUseCase();
+
+            useCase.Execute(id, cityDetails);
             throw new NotImplementedException();
         }
 
         [HttpDelete]
         public ActionResult Delete(int id)
         {
-            throw new NotImplementedException();
+            var useCase = new DeleteCityUseCase();
+            useCase.Execute(id);
+            return Ok();
         }
 
         [HttpGet]
