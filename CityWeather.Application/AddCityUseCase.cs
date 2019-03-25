@@ -9,7 +9,7 @@ namespace CityWeather.Application
 
         public AddCityUseCase()
         {
-            
+            _citiesRepository = new CitiesRepository();
         }
 
         public void Execute(CityDetails cityDetails)

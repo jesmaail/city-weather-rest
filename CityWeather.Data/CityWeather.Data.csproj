@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.60.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CityWeather.Entities\CityWeather.Entities.csproj" />
   </ItemGroup>
 

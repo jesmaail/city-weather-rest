@@ -14,6 +14,8 @@ namespace CityWeather.API.Controllers
         // - Unit test
         // - Dependency Injection        
         // - Details FromBody or parameters?
+        // - Validation on ratings etc.
+        // - Try Catch code
 
         [HttpPost]
         public ActionResult Add([FromBody]CityDetails cityDetails)
