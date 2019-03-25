@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using CityWeather.Data.Interfaces;
 using CityWeather.Entities;
@@ -37,9 +38,9 @@ namespace CityWeather.Data
             _connection.Execute($"INSERT INTO Cities (Name, State, CountryName, Rating, Established, EstimatedPopulation) Values('{city.Name}', '{city.State}', '{city.CountryName}', {city.Rating}, '{city.Established}', {city.EstimatedPopulation});");
         }
 
-        public void UpdateCityDetails(int id, CityDetails city)
+        public void UpdateCityDetails(int id, int rating, DateTime established, int estimatedPopulation)
         {
-            _connection.Execute($"UPDATE Cities SET Rating = '{city.Rating}', Established = '{city.Established}', EstimatedPopulation = '{city.EstimatedPopulation}' WHERE Id = {id}");
+            _connection.Execute($"UPDATE Cities SET Rating = '{rating}', Established = '{established}', EstimatedPopulation = '{estimatedPopulation}' WHERE Id = {id}");
         }
     }
 }

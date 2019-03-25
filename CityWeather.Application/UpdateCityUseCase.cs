@@ -1,6 +1,6 @@
 ﻿using CityWeather.Application.Interfaces;
 using CityWeather.Data.Interfaces;
-using CityWeather.Entities;
+using System;
 
 namespace CityWeather.Application
 {
@@ -13,9 +13,9 @@ namespace CityWeather.Application
             _citiesRepository = citiesRepository;
         }
 
-        public void Execute(int id, CityDetails cityDetails)
+        public void Execute(int id, int rating, DateTime established, int estimatedPopulation)
         {
-            _citiesRepository.UpdateCityDetails(id, cityDetails);
+            _citiesRepository.UpdateCityDetails(id, rating, established, estimatedPopulation);
         }
     }
 }

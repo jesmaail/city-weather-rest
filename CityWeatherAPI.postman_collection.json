@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"Name\"  : \"foo\",\n\t\"State\" : \"bar\",\n\t\"CountryName\" : \"Foob\",\n\t\"Rating\" : \"4\",\n\t\"Established\" : \"01/01/1990\",\n\t\"EstimatedPopulation\" : \"12\"\n}\""
+					"raw": "{\n\t\"Name\"  : \"Cardiff\",\n\t\"State\" : \"South Wales\",\n\t\"CountryName\" : \"Wales\",\n\t\"Rating\" : \"5\",\n\t\"Established\" : \"01/01/1809\",\n\t\"EstimatedPopulation\" : \"1200\"\n}\""
 				},
 				"url": {
 					"raw": "http://localhost:5000/api/cities/add",
@@ -51,10 +51,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"Name\"  : \"foo\",\n\t\"State\" : \"bar\",\n\t\"CountryName\" : \"Foob\",\n\t\"Rating\" : \"4\",\n\t\"Established\" : \"01/01/1990\",\n\t\"EstimatedPopulation\" : \"12\"\n}\""
+					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/cities/update?id=1",
+					"raw": "http://localhost:5000/api/cities/update?id=1&rating=1&established=01/01/2002&estimatedpopulatrion=2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -69,6 +69,18 @@
 						{
 							"key": "id",
 							"value": "1"
+						},
+						{
+							"key": "rating",
+							"value": "1"
+						},
+						{
+							"key": "established",
+							"value": "01/01/2002"
+						},
+						{
+							"key": "estimatedpopulatrion",
+							"value": "2"
 						}
 					]
 				}
@@ -85,7 +97,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/cities/search?name=foo",
+					"raw": "http://localhost:5000/api/cities/search?name=Swansea",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -99,7 +111,38 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "foo"
+							"value": "Swansea"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/cities/delete?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"cities",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
 						}
 					]
 				}

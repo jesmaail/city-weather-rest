@@ -1,4 +1,5 @@
 ﻿using CityWeather.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace CityWeather.Data.Interfaces
@@ -9,7 +10,7 @@ namespace CityWeather.Data.Interfaces
 
         IEnumerable<CityDetails> GetCityDetails(string name);
 
-        void UpdateCityDetails(int id, CityDetails city);
+        void UpdateCityDetails(int id, int rating, DateTime established, int estimatedPopulation);
 
         void DeleteCityDetails(int id);
     }

@@ -1,6 +1,7 @@
 ﻿using CityWeather.Application.Interfaces;
 using CityWeather.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace CityWeather.API.Controllers
 {
@@ -34,9 +35,9 @@ namespace CityWeather.API.Controllers
         }
 
         [HttpPatch]
-        public ActionResult Update(int id, [FromBody]CityDetails cityDetails)
+        public ActionResult Update(int id, int rating, DateTime established, int estimatedPopulation)
         {
-            _updateCityUseCase.Execute(id, cityDetails);
+            _updateCityUseCase.Execute(id, rating, established, estimatedPopulation);
             return Ok();
         }
 

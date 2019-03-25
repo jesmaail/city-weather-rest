@@ -1,9 +1,9 @@
-﻿using CityWeather.Entities;
+﻿using System;
 
 namespace CityWeather.Application.Interfaces
 {
     public interface IUpdateCityUseCase
     {
-        void Execute(int id, CityDetails cityDetails);
+        void Execute(int id, int rating, DateTime established, int estimatedPopulation);
     }
 }
