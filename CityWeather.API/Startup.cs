@@ -32,6 +32,7 @@ namespace CityWeather.API
 
             services.AddSingleton<ICitiesRepository, CitiesRepository>();
             services.AddSingleton<ICountryInfoRepository, CountryInfoRepository>();
+            services.AddSingleton<IWeatherInfoRepository, WeatherInfoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

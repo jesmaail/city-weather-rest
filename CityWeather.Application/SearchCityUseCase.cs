@@ -9,11 +9,13 @@ namespace CityWeather.Application
     {
         private readonly ICitiesRepository _citiesRepository;
         private readonly ICountryInfoRepository _countryInfoRepository;
+        private readonly IWeatherInfoRepository _weatherInfoRepository;
 
-        public SearchCityUseCase(ICitiesRepository citiesRepository, ICountryInfoRepository countryInfoRepository)
+        public SearchCityUseCase(ICitiesRepository citiesRepository, ICountryInfoRepository countryInfoRepository, IWeatherInfoRepository weatherInfoRepository)
         {
             _citiesRepository = citiesRepository;
             _countryInfoRepository = countryInfoRepository;
+            _weatherInfoRepository = weatherInfoRepository;
         }
 
         public IEnumerable<CityDetails> Execute(string name)
@@ -25,7 +27,7 @@ namespace CityWeather.Application
             foreach (var city in cityDetails)
             {
                 var countryInfo = _countryInfoRepository.GetCountryInformation(city.CountryName);
-                var weatherDetails = "";
+                var weatherDetails = _weatherInfoRepository.GetWeather(name, countryInfo.TwoDigitCountryCode);
 
                 city.CountryInfo = countryInfo;
                 city.CurrentWeather = weatherDetails;

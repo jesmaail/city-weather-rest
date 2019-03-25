@@ -9,6 +9,7 @@ namespace CityWeather.Application.Test
     {
         private Mock<ICitiesRepository> _citiesRepositoryMock = new Mock<ICitiesRepository>();
         private Mock<ICountryInfoRepository> _countryInfoRepositoryMock = new Mock<ICountryInfoRepository>();
+        private Mock<IWeatherInfoRepository> _weatherInfoRepositoryMock = new Mock<IWeatherInfoRepository>();
 
         [SetUp]
         public void SetUp()
@@ -19,7 +20,7 @@ namespace CityWeather.Application.Test
         [TestCase("Cardiff")]
         public void search_city_calls_city_repository_with_correct_data(string cityName)
         {
-            var sut = new SearchCityUseCase(_citiesRepositoryMock.Object, _countryInfoRepositoryMock.Object);
+            var sut = new SearchCityUseCase(_citiesRepositoryMock.Object, _countryInfoRepositoryMock.Object, _weatherInfoRepositoryMock.Object);
 
             sut.Execute(cityName);
 
