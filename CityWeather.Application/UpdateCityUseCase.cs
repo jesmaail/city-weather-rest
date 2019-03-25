@@ -3,18 +3,18 @@ using CityWeather.Entities;
 
 namespace CityWeather.Application
 {
-    public class AddCityUseCase
+    public class UpdateCityUseCase
     {
         private readonly ICitiesRepository _citiesRepository;
 
-        public AddCityUseCase()
+        public UpdateCityUseCase()
         {
-            
+
         }
 
-        public void Execute(CityDetails cityDetails)
+        public void Execute(int id, CityDetails cityDetails)
         {
-            _citiesRepository.StoreCityDetails(cityDetails);
+            _citiesRepository.UpdateCityDetails(id, cityDetails);
         }
     }
 }
