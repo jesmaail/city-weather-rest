@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"Name\"  : \"Cardiff\",\n\t\"State\" : \"South Wales\",\n\t\"CountryName\" : \"Wales\",\n\t\"Rating\" : \"5\",\n\t\"Established\" : \"01/01/1809\",\n\t\"EstimatedPopulation\" : \"1200\"\n}\""
+					"raw": "{\n\t\"Name\"  : \"Swansea\",\n\t\"State\" : \"Wales\",\n\t\"CountryName\" : \"United Kingdom\",\n\t\"Rating\" : \"5\",\n\t\"Established\" : \"01/01/1756\",\n\t\"EstimatedPopulation\" : \"12000\"\n}\""
 				},
 				"url": {
 					"raw": "http://localhost:5000/api/cities/add",
@@ -54,7 +54,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/cities/update?id=1&rating=1&established=01/01/2002&estimatedpopulatrion=2",
+					"raw": "http://localhost:5000/api/cities/update?id=3&rating=3&established=01/01/2002&estimatedpopulation=2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -68,18 +68,18 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "1"
+							"value": "3"
 						},
 						{
 							"key": "rating",
-							"value": "1"
+							"value": "3"
 						},
 						{
 							"key": "established",
 							"value": "01/01/2002"
 						},
 						{
-							"key": "estimatedpopulatrion",
+							"key": "estimatedpopulation",
 							"value": "2"
 						}
 					]
@@ -97,7 +97,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/cities/search?name=Swansea",
+					"raw": "http://localhost:5000/api/cities/search?name=Glasgow",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -111,7 +111,7 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "Swansea"
+							"value": "Glasgow"
 						}
 					]
 				}
@@ -128,7 +128,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/cities/delete?id=2",
+					"raw": "http://localhost:5000/api/cities/delete?id=7",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -142,7 +142,7 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "2"
+							"value": "7"
 						}
 					]
 				}
