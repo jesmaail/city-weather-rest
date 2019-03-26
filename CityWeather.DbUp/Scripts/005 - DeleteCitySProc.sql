@@ -1,0 +1,9 @@
+CREATE OR ALTER PROCEDURE dbo.DeleteCity
+	@id	int
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	DELETE FROM Cities WHERE Id = @id
+END
+GO	

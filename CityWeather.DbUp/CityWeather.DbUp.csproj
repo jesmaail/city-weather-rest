@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Scripts\000 - CreateCitiesTable.sql" />
+    <None Remove="Scripts\002 - StoreCitySProc.sql" />
+    <None Remove="Scripts\003 - GetCitySProc.sql" />
+    <None Remove="Scripts\004 - UpdateCitySProc.sql" />
+    <None Remove="Scripts\005 - DeleteCitySProc.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\004 - UpdateCitySProc.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\002 - StoreCitySProc.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\000 - CreateCitiesTable.sql" />
+    <EmbeddedResource Include="Scripts\003 - GetCitySProc.sql" />
+    <EmbeddedResource Include="Scripts\005 - DeleteCitySProc.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DbUp" Version="4.2.0" />
+  </ItemGroup>
+
+</Project>

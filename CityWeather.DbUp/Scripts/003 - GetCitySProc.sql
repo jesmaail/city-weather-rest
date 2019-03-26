@@ -1,0 +1,9 @@
+CREATE OR ALTER PROCEDURE dbo.GetCity
+	@name nvarchar(50)
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT * FROM Cities WHERE Name = @name
+END
+GO	
