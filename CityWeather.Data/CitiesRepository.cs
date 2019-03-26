@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using CityWeather.Data.Interfaces;
 using CityWeather.Entities;
@@ -10,12 +11,12 @@ namespace CityWeather.Data
 {
     public class CitiesRepository : ICitiesRepository
     {
-        // TODO 
-        // - SProcs
-        // - ORM
-        // - At least cleanup the Queries!
-
         private SqlConnection _connection;
+
+        private const string GET_CITY_SPROC = "dbo.GetCity";
+        private const string DELETE_CITY_SPROC = "dbo.DeleteCity";
+        private const string STORE_CITY_SPROC = "dbo.StoreCity";
+        private const string UPDATE_CITY_SPROC = "dbo.UpdateCity";
 
         public CitiesRepository(IConfiguration configuration)
         {
@@ -25,22 +26,47 @@ namespace CityWeather.Data
 
         public void DeleteCityDetails(int id)
         {
-            _connection.Execute($"DELETE FROM Cities WHERE Id = {id}");
+            _connection.Execute(DELETE_CITY_SPROC,
+                new
+                {
+                    id = id
+                }, commandType: CommandType.StoredProcedure);
         }
 
         public IEnumerable<CityDetails> GetCityDetails(string name)
         {
-            return _connection.Query<CityDetails>($"SELECT * FROM Cities WHERE Name = '{name}'");
+            return _connection.Query<CityDetails>(GET_CITY_SPROC,
+                new
+                {
+                    name = name
+                }, commandType: CommandType.StoredProcedure);
         }
 
         public void StoreCityDetails(CityDetails city)
         {
-            _connection.Execute($"INSERT INTO Cities (Name, State, CountryName, Rating, Established, EstimatedPopulation) Values('{city.Name}', '{city.State}', '{city.CountryName}', {city.Rating}, '{city.Established}', {city.EstimatedPopulation});");
+            _connection.Execute(STORE_CITY_SPROC,
+                new
+                {
+                    name = city.Name,
+                    state = city.State,
+                    countryName = city.CountryName,
+                    rating = city.Rating,
+                    established = city.Established,
+                    estimatedPopulation = city.EstimatedPopulation
+                }, commandType: CommandType.StoredProcedure);
+
         }
 
         public void UpdateCityDetails(int id, int rating, DateTime established, int estimatedPopulation)
         {
-            _connection.Execute($"UPDATE Cities SET Rating = '{rating}', Established = '{established}', EstimatedPopulation = '{estimatedPopulation}' WHERE Id = {id}");
+            _connection.Execute(UPDATE_CITY_SPROC,
+                new
+                {
+                    id = id,
+                    rating = rating,
+                    established = established,
+                    estimatedPopulation = estimatedPopulation
+                }, commandType: CommandType.StoredProcedure);
         }
     }
 }
