@@ -8,7 +8,8 @@ namespace CityWeather.DbUp
     {
         static void Main(string[] args)
         {
-            var dbString = "Server=localhost,1433; Database=Cities2; User Id=sa; Password=Letmein123!";
+            // Should be in a config of some kind.
+            var dbString = "Server=localhost,1433; Database=Cities; User Id=sa; Password=Letmein123!";
             EnsureDatabase.For.SqlDatabase(dbString);
 
             var upgrader = DeployChanges.To
